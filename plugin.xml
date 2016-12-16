@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.scala.cordova.plugin.daydreamer"
+    version="1.0.0">
+
+    <name>DayDream</name>
+    <repo>https://github.com/ScalaInc/cordova-plugin-daydream.git</repo>
+    <keywords>webview,daydream,android</keywords>
+    <license>MIT</license>
+    <author>Scala Inc</author>
+    <description>
+      &lt;p&gt;This is a DayDream plugin for Cordova 6.1.1+ supporting Android (>=4.1).&lt;/p&gt;
+    </description>
+
+   
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="ExpDayDream" >
+                <param name="android-package" value="com.scala.cordova.plugin.daydreamer"/>
+            </feature>
+            <feature name="ExpDayDreamService" >
+                <param name="android-package" value="com.scala.cordova.plugin.daydreamer"/>
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+           <service
+                 android:name=".ExpDayDreamService"
+                 android:exported="true"
+                 android:icon="@drawable/my_icon"
+                 android:label="Exp Day Dream" >
+
+                 <intent-filter>
+                     <action android:name="android.service.dreams.DreamService" />
+                     <category android:name="android.intent.category.DEFAULT" />
+                 </intent-filter>
+
+                 <!-- Point to additional information for this dream (optional) -->
+                 <meta-data
+                     android:name="android.service.dream"
+                     android:resource="@xml/my_dream" />
+             </service>
+        </config-file>
+        <source-file src="src/android/DayDreamService.java" target-dir="src/com/scala/cordova/plugin/daydreamer" />
+        <source-file src="src/android/layout/daydream_layout.xml" target-dir="res/layout"/>
+        <source-file src="src/android/icon.png" target-dir="res/drawable"/>
+    </platform>
+    
+</plugin>
