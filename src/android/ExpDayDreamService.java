@@ -32,15 +32,12 @@ public class ExpDayDreamService extends DreamService {
         setFullscreen(true);
         // Set the dream layout
         setContentView(R.layout.dream);
-
-        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        final String url = prefs.getString("url", "https://player.goexp.io/");
         
         WebView webView = (WebView) findViewById(R.id.webview);
         webView.setWebChromeClient(new WebChromeClient());
         webView.setWebViewClient(new WebViewClient());
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setDomStorageEnabled(true);
-        webView.loadUrl(url);
+        webView.loadUrl(getString(R.string.player_url));
      }
  }

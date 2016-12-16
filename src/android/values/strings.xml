@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Exp Day Dream</string>
+    <string name="player_url">https://player-staging.goexp.io/</string>
+</resources>
