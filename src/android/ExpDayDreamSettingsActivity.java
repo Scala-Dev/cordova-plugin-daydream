@@ -15,7 +15,7 @@ import android.preference.PreferenceFragment;
  * Created by Cesar Oyarzun on 12/19/16.
  */
 
-public class ExpDreamDaySettingsActivity extends PreferenceActivity {
+public class ExpDayDreamSettingsActivity extends PreferenceActivity {
 
         @Override
         public void onCreate(Bundle bundle) {
