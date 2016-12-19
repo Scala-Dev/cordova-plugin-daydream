@@ -31,9 +31,16 @@ public class ExpDayDreamService extends DreamService {
         // Hide system UI
         setFullscreen(true);
         // Set the dream layout
-        setContentView(R.layout.dream);
+
+        Application app=cordova.getActivity().getApplication();
+        String package_name = app.getPackageName();
+        Resources resources = app.getResources();
+        int ic = resources.getIdentifier("dream", "layout", package_name);
+        setContentView(ic);
         
-        WebView webView = (WebView) findViewById(R.id.webview);
+
+
+        WebView webView = (WebView) findViewById(resources.getIdentifier("id","webview");
         webView.setWebChromeClient(new WebChromeClient());
         webView.setWebViewClient(new WebViewClient());
         webView.getSettings().setJavaScriptEnabled(true);
