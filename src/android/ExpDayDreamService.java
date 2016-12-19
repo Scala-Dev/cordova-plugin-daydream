@@ -20,6 +20,11 @@
 
 package com.scala.cordova.plugin.daydreamer;
 
+import android.service.dreams.DreamService;
+import android.webkit.WebChromeClient;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+
 public class ExpDayDreamService extends DreamService {
 
      @Override
