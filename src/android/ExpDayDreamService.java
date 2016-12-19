@@ -40,7 +40,7 @@ public class ExpDayDreamService extends DreamService {
         
 
 
-        WebView webView = (WebView) findViewById(resources.getIdentifier("id","webview");
+        WebView webView = (WebView) findViewById(resources.getIdentifier("id","webview"));
         webView.setWebChromeClient(new WebChromeClient());
         webView.setWebViewClient(new WebViewClient());
         webView.getSettings().setJavaScriptEnabled(true);
