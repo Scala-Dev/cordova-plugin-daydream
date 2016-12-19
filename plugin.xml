@@ -36,17 +36,14 @@
                      <action android:name="android.service.dreams.DreamService" />
                      <category android:name="android.intent.category.DEFAULT" />
                  </intent-filter>
-
-                 <!-- Point to additional information for this dream (optional) -->
-                 <meta-data
-                     android:name="android.service.dream"
-                     android:resource="@xml/my_dream" />
              </service>
         </config-file>
         <source-file src="src/android/ExpDayDreamService.java" target-dir="src/com/scala/cordova/plugin/daydreamer" />
         <source-file src="src/android/layout/daydream_layout.xml" target-dir="res/layout"/>
         <source-file src="src/android/icon.png" target-dir="res/drawable"/>
-        <source-file src="src/android/values/strings.xml" target-dir="res/values"/>
+        <config-file target="res/values/strings.xml" parent="/*">
+            <string name="player_url">https://player-staging.goexp.io/</string>
+        </config-file>
     </platform>
     
 </plugin>
