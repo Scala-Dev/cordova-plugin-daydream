@@ -20,6 +20,8 @@
 
 package com.scala.cordova.plugin.daydreamer;
 
+import android.app.Application;
+import android.content.res.Resources;
 import android.service.dreams.DreamService;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
@@ -37,12 +39,11 @@ public class ExpDayDreamService extends DreamService {
         setFullscreen(true);
         // Set the dream layout
 
-        Application app=cordova.getActivity().getApplication();
+        Application app = this.getApplication();
         String package_name = app.getPackageName();
         Resources resources = app.getResources();
         int ic = resources.getIdentifier("dream", "layout", package_name);
         setContentView(ic);
-        
 
         WebView webView = (WebView) findViewById(resources.getIdentifier("id","webview"));
         webView.setWebChromeClient(new WebChromeClient());
