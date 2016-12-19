@@ -20,7 +20,7 @@
 
 package com.scala.cordova.plugin.daydreamer;
 
-import android.annotation.TargetApi;
+
 import android.app.Application;
 import android.content.res.Resources;
 import android.service.dreams.DreamService;
@@ -28,7 +28,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-@TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+
 public class ExpDayDreamService extends DreamService {
 
      @Override
