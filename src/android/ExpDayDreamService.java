@@ -20,6 +20,7 @@
 
 package com.scala.cordova.plugin.daydreamer;
 
+import android.annotation.TargetApi;
 import android.app.Application;
 import android.content.res.Resources;
 import android.service.dreams.DreamService;
@@ -27,6 +28,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+@TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
 public class ExpDayDreamService extends DreamService {
 
      @Override
@@ -42,10 +44,10 @@ public class ExpDayDreamService extends DreamService {
         Application app = this.getApplication();
         String package_name = app.getPackageName();
         Resources resources = app.getResources();
-        int ic = resources.getIdentifier("dream", "layout", package_name);
+        int ic = resources.getIdentifier("daydream_layout", "layout", package_name);
         setContentView(ic);
 
-        WebView webView = (WebView) findViewById(resources.getIdentifier("id","webview",package_name));
+        WebView webView = (WebView) findViewById(resources.getIdentifier("webview","id",package_name));
         webView.setWebChromeClient(new WebChromeClient());
         webView.setWebViewClient(new WebViewClient());
         webView.getSettings().setJavaScriptEnabled(true);
