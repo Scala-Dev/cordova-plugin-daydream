@@ -4,7 +4,7 @@
     id="cordova-plugin-daydreamer"
     version="1.0.0">
 
-    <name>DayDream</name>
+    <name>Exp DayDream</name>
     <repo>https://github.com/ScalaInc/cordova-plugin-daydream.git</repo>
     <keywords>webview,daydream,android</keywords>
     <license>MIT</license>
