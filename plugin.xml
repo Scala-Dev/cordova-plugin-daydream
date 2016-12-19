@@ -43,7 +43,7 @@
                      android:resource="@xml/my_dream" />
              </service>
         </config-file>
-        <source-file src="src/android/DayDreamService.java" target-dir="src/com/scala/cordova/plugin/daydreamer" />
+        <source-file src="src/android/ExpDayDreamService.java" target-dir="src/com/scala/cordova/plugin/daydreamer" />
         <source-file src="src/android/layout/daydream_layout.xml" target-dir="res/layout"/>
         <source-file src="src/android/icon.png" target-dir="res/drawable"/>
         <source-file src="src/android/values/strings.xml" target-dir="res/values"/>
