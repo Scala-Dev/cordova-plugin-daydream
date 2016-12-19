@@ -1,37 +1,25 @@
-/*
- Copyright 2014 Modern Alchemists OG
-
- Licensed under MIT.
-
- Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
- documentation files (the "Software"), to deal in the Software without restriction, including without limitation
- the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
- to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of
- the Software.
-
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
- THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
- TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- SOFTWARE.
-*/
-
 package com.scala.cordova.plugin.daydreamer;
 
 
 import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.service.dreams.DreamService;
+import android.util.Log;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 
 public class ExpDayDreamService extends DreamService {
+    private static final String TAG = "ExpDayDreamService";
+    public static final String EXP_DAYDREAM_PREF = "exp_daydream_pref";
+    public static final String EXP_PLAYER_URL = "exp_player_url";
+    public static final String DEFAULT_URL_PLAYER = "https://player.goexp.io";
 
-     @Override
+
+    @Override
      public void onAttachedToWindow() {
          super.onAttachedToWindow();
 
@@ -52,6 +40,34 @@ public class ExpDayDreamService extends DreamService {
         webView.setWebViewClient(new WebViewClient());
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setDomStorageEnabled(true);
-        webView.loadUrl("https://player-staging.goexp.io");
+
+
+
+         SharedPreferences sharedPref = getSharedPreferences(EXP_DAYDREAM_PREF,Context.MODE_PRIVATE);
+         SharedPreferences.Editor editor = sharedPref.edit();
+         String playerUrl=null;
+         if(!sharedPref.contains(EXP_PLAYER_URL) && !sharedPref.getString(EXP_PLAYER_URL,DEFAULT_URL_PLAYER).isEmpty()){
+             editor.putString(EXP_PLAYER_URL, DEFAULT_URL_PLAYER);
+             editor.commit();
+         }else{
+             //read from preference
+             playerUrl = sharedPref.getString(EXP_PLAYER_URL,DEFAULT_URL_PLAYER);
+         }
+
+         webView.loadUrl(playerUrl);
+
      }
- }
+
+    @Override
+    public void onDreamingStarted() {
+        super.onDreamingStarted();
+        Log.d(TAG,"EXP DayDream Started");
+    }
+
+    @Override
+    public void onDreamingStopped() {
+        super.onDreamingStopped();
+        Log.d(TAG,"EXP DayDream Stopped");
+    }
+}
+
