@@ -16,13 +16,13 @@ cordova run android
 
 Settings ---> Display ---> Daydream ---> Select Exp DayDream.
 
-![alt tag](https://github.com/ScalaInc/cordova-plugin-daydream/exp-daydream.png)
+![alt tag](https://github.com/ScalaInc/cordova-plugin-daydream/blob/master/exp-daydream.png)
 
 
 
 If you want to change the player url just select settings in the daydream and change the url.
 
-![alt tag](https://github.com/ScalaInc/cordova-plugin-daydream/daydream-settings.png)
+![alt tag](https://github.com/ScalaInc/cordova-plugin-daydream/blob/master/daydream-settings.png)
 
 
 ## Author
