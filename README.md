@@ -6,6 +6,7 @@ This is a Exp DayDream app for android, when the daydream app starts it loads a 
 You may use cordova CLI as follows:
 
 <pre>
+cordova create daydream-test com.daydream.test DayDreamTest
 cordova platforms add android
 cordova plugin add https://github.com/ScalaInc/cordova-plugin-daydream.git
 cordova build android
