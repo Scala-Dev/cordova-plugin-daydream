@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="cordova-plugin-daydreamer"
+    version="1.0.0">
+
+    <name>DayDream</name>
+    <repo>https://github.com/ScalaInc/cordova-plugin-daydream.git</repo>
+    <keywords>webview,daydream,android</keywords>
+    <license>MIT</license>
+    <author>Scala Inc</author>
+    <description>
+      &lt;p&gt;This is a DayDream plugin for Cordova 6.1.1+ supporting Android (>=4.1).&lt;/p&gt;
+    </description>
+
+   
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="ExpDayDreamSettingsActivity" >
+                <param name="android-package" value="com.scala.cordova.plugin.daydreamer"/>
+            </feature>
+            <feature name="ExpDayDreamService" >
+                <param name="android-package" value="com.scala.cordova.plugin.daydreamer"/>
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <uses-sdk android:minSdkVersion="17" android:targetSdkVersion="24" />
+            <activity android:name="com.scala.cordova.plugin.daydreamer.ExpDayDreamSettingsActivity"
+                android:exported="true"
+                android:label="Exp DayDream Settings">
+                <intent-filter>
+                    <action android:name="android.intent.action.MAIN" />
+                    <category android:name="android.intent.category.DEFAULT" />
+                </intent-filter>
+
+            </activity>
+            <service
+                 android:name="com.scala.cordova.plugin.daydreamer.ExpDayDreamService"
+                 android:exported="true"
+                 android:icon="@drawable/icon"
+                 android:label="Exp DayDream"
+                 android:permission="android.permission.BIND_DREAM_SERVICE" >
+
+                 <intent-filter>
+                     <action android:name="android.service.dreams.DreamService" />
+                     <category android:name="android.intent.category.DEFAULT" />
+                 </intent-filter>
+                 <meta-data android:name="android.service.dream" android:resource="@xml/dream" />
+            </service>
+        </config-file>
+        <source-file src="src/android/ExpDayDreamService.java" target-dir="src/com/scala/cordova/plugin/daydreamer" />
+        <source-file src="src/android/ExpDayDreamSettingsActivity.java" target-dir="src/com/scala/cordova/plugin/daydreamer" />
+        <source-file src="src/android/layout/daydream_layout.xml" target-dir="res/layout"/>
+        <source-file src="src/android/icon.png" target-dir="res/drawable"/>
+        <source-file src="src/android/xml/dream.xml" target-dir="res/xml"/>
+        <source-file src="src/android/xml/prefs.xml" target-dir="res/xml"/>
+
+    </platform>
+    
+</plugin>

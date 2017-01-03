@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="EXP Player URL">
+        <EditTextPreference
+            android:id="@+id/player_textfield"
+            android:key="player_textfield"
+            android:title="URL"
+            android:dialogTitle="Player URL"
+            android:summary="https://player-staging.goexp.io" />
+    </PreferenceCategory>
+</PreferenceScreen>
